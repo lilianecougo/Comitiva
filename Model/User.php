@@ -206,4 +206,5 @@ class User extends AppModel
 
 		return $conditions;
 	}
+	
 }
