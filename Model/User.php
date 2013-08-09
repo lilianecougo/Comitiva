@@ -150,7 +150,7 @@ class User extends AppModel
 		// faltou campo de confirmação
 		else
 		{
-			$this->validationErrors['password_confirm'] = 'Campo obrigatório.';
+			$this->validationErrors['password_confirm'][] = 'Campo obrigatório.';
 
 			return false;
 		}
@@ -158,15 +158,13 @@ class User extends AppModel
 		// valida o tamanho da senha
 		if(mb_strlen($passwd) < 4)
 		{
-			$this->validationErrors['password'] = 'A senha deve ter pelo menos 4 caracteres';
-
 			return false;
 		}
 
 		// valida se as senhas não batem
 		if($passwd != $confirm)
 		{
-			$this->validationErrors['password_confirm'] = 'Campo não bate com a senha';
+			$this->validationErrors['password_confirm'][] = 'Campo não bate com a senha';
 
 			return false;
 		}
